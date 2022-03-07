@@ -1,5 +1,6 @@
 package com.example.weizhunon.Pojo;
 
+import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -8,6 +9,7 @@ import com.baomidou.mybatisplus.annotation.TableId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Data
 @AllArgsConstructor
@@ -29,8 +31,6 @@ public class Goods {
     private String goodsBigLogo;
 
     private String goodsSmallLogo;
-
     private Date addTime;
-
     private Date updTime;
 }
