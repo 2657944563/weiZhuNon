@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weizhunon.Mapper.UserMapper">
+  <resultMap id="BaseResultMap" type="com.example.weizhunon.Pojo.User">
+    <!--@mbg.generated-->
+    <!--@Table `user`-->
+    <id column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="openId" jdbcType="VARCHAR" property="openid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="power" jdbcType="INTEGER" property="power" />
+    <result column="phone" jdbcType="VARCHAR" property="phone" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userId, openId, `name`, `power`, phone
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from `user`
+    where userId = #{userid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from `user`
+    where userId = #{userid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="userId" keyProperty="userid" parameterType="com.example.weizhunon.Pojo.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user` (openId, `name`, `power`, 
+      phone)
+    values (#{openid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{power,jdbcType=INTEGER}, 
+      #{phone,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="userId" keyProperty="userid" parameterType="com.example.weizhunon.Pojo.User" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into `user`
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="openid != null">
+        openId,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="power != null">
+        `power`,
+      </if>
+      <if test="phone != null">
+        phone,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="openid != null">
+        #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        #{power,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        #{phone,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.weizhunon.Pojo.User">
+    <!--@mbg.generated-->
+    update `user`
+    <set>
+      <if test="openid != null">
+        openId = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="power != null">
+        `power` = #{power,jdbcType=INTEGER},
+      </if>
+      <if test="phone != null">
+        phone = #{phone,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.weizhunon.Pojo.User">
+    <!--@mbg.generated-->
+    update `user`
+    set openId = #{openid,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `power` = #{power,jdbcType=INTEGER},
+      phone = #{phone,jdbcType=VARCHAR}
+    where userId = #{userid,jdbcType=INTEGER}
+  </update>
+</mapper>

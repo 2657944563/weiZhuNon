@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weizhunon.Mapper.GoodsMapper">
+  <resultMap id="BaseResultMap" type="com.example.weizhunon.Pojo.Goods">
+    <!--@mbg.generated-->
+    <!--@Table goods-->
+    <id column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="cat_id" jdbcType="INTEGER" property="catId" />
+    <result column="goods_name" jdbcType="VARCHAR" property="goodsName" />
+    <result column="goods_price" jdbcType="DECIMAL" property="goodsPrice" />
+    <result column="goods_number" jdbcType="INTEGER" property="goodsNumber" />
+    <result column="goods_weight" jdbcType="DOUBLE" property="goodsWeight" />
+    <result column="goods_big_logo" jdbcType="VARCHAR" property="goodsBigLogo" />
+    <result column="goods_small_logo" jdbcType="VARCHAR" property="goodsSmallLogo" />
+    <result column="add_time" jdbcType="TIMESTAMP" property="addTime" />
+    <result column="upd_time" jdbcType="TIMESTAMP" property="updTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    goods_id, cat_id, goods_name, goods_price, goods_number, goods_weight, goods_big_logo, 
+    goods_small_logo, add_time, upd_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from goods
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </delete>
+  <insert id="Insert" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.example.weizhunon.Pojo.Goods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into goods (cat_id, goods_name, goods_price, 
+      goods_number, goods_weight, goods_big_logo, 
+      goods_small_logo, add_time, upd_time
+      )
+    values (#{catId,jdbcType=INTEGER}, #{goodsName,jdbcType=VARCHAR}, #{goodsPrice,jdbcType=DECIMAL}, 
+      #{goodsNumber,jdbcType=INTEGER}, #{goodsWeight,jdbcType=DOUBLE}, #{goodsBigLogo,jdbcType=VARCHAR}, 
+      #{goodsSmallLogo,jdbcType=VARCHAR}, #{addTime,jdbcType=TIMESTAMP}, #{updTime,jdbcType=TIMESTAMP}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="goods_id" keyProperty="goodsId" parameterType="com.example.weizhunon.Pojo.Goods" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into goods
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="catId != null">
+        cat_id,
+      </if>
+      <if test="goodsName != null">
+        goods_name,
+      </if>
+      <if test="goodsPrice != null">
+        goods_price,
+      </if>
+      <if test="goodsNumber != null">
+        goods_number,
+      </if>
+      <if test="goodsWeight != null">
+        goods_weight,
+      </if>
+      <if test="goodsBigLogo != null">
+        goods_big_logo,
+      </if>
+      <if test="goodsSmallLogo != null">
+        goods_small_logo,
+      </if>
+      <if test="addTime != null">
+        add_time,
+      </if>
+      <if test="updTime != null">
+        upd_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="catId != null">
+        #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsNumber != null">
+        #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsWeight != null">
+        #{goodsWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsBigLogo != null">
+        #{goodsBigLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSmallLogo != null">
+        #{goodsSmallLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null">
+        #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.weizhunon.Pojo.Goods">
+    <!--@mbg.generated-->
+    update goods
+    <set>
+      <if test="catId != null">
+        cat_id = #{catId,jdbcType=INTEGER},
+      </if>
+      <if test="goodsName != null">
+        goods_name = #{goodsName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsPrice != null">
+        goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="goodsNumber != null">
+        goods_number = #{goodsNumber,jdbcType=INTEGER},
+      </if>
+      <if test="goodsWeight != null">
+        goods_weight = #{goodsWeight,jdbcType=DOUBLE},
+      </if>
+      <if test="goodsBigLogo != null">
+        goods_big_logo = #{goodsBigLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsSmallLogo != null">
+        goods_small_logo = #{goodsSmallLogo,jdbcType=VARCHAR},
+      </if>
+      <if test="addTime != null">
+        add_time = #{addTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="updTime != null">
+        upd_time = #{updTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.weizhunon.Pojo.Goods">
+    <!--@mbg.generated-->
+    update goods
+    set cat_id = #{catId,jdbcType=INTEGER},
+      goods_name = #{goodsName,jdbcType=VARCHAR},
+      goods_price = #{goodsPrice,jdbcType=DECIMAL},
+      goods_number = #{goodsNumber,jdbcType=INTEGER},
+      goods_weight = #{goodsWeight,jdbcType=DOUBLE},
+      goods_big_logo = #{goodsBigLogo,jdbcType=VARCHAR},
+      goods_small_logo = #{goodsSmallLogo,jdbcType=VARCHAR},
+      add_time = #{addTime,jdbcType=TIMESTAMP},
+      upd_time = #{updTime,jdbcType=TIMESTAMP}
+    where goods_id = #{goodsId,jdbcType=INTEGER}
+  </update>
+</mapper>

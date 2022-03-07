@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weizhunon.Mapper.AddressMapper">
+  <resultMap id="BaseResultMap" type="com.example.weizhunon.Pojo.Address">
+    <!--@Table address-->
+    <id column="addressId" jdbcType="INTEGER" property="addressid" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    addressId, userId, address
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from address
+    where addressId = #{addressid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from address
+    where addressId = #{addressid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="addressId" keyProperty="addressid" parameterType="com.example.weizhunon.Pojo.Address" useGeneratedKeys="true">
+    insert into address (userId, address)
+    values (#{userid,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="addressId" keyProperty="addressid" parameterType="com.example.weizhunon.Pojo.Address" useGeneratedKeys="true">
+    insert into address
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userId,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.example.weizhunon.Pojo.Address">
+    update address
+    <set>
+      <if test="userid != null">
+        userId = #{userid,jdbcType=INTEGER},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where addressId = #{addressid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.example.weizhunon.Pojo.Address">
+    update address
+    set userId = #{userid,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR}
+    where addressId = #{addressid,jdbcType=INTEGER}
+  </update>
+</mapper>
