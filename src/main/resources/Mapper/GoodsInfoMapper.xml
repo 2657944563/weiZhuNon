@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.weizhunon.Mapper.GoodsInfoMapper">
+    <resultMap id="BaseResultMap" type="com.example.weizhunon.Pojo.GoodsInfo">
+        <!--@mbg.generated-->
+        <!--@Table goodsInfo-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="goods_id" jdbcType="INTEGER" property="goodsId"/>
+        <result column="goods_info" jdbcType="VARCHAR" property="goodsInfo"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, goods_id, goods_info
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from goodsInfo
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from goodsInfo
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.example.weizhunon.Pojo.GoodsInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into goodsInfo (goods_id, goods_info)
+        values (#{goodsId,jdbcType=INTEGER}, #{goodsInfo,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.example.weizhunon.Pojo.GoodsInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into goodsInfo
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="goodsId != null">
+                goods_id,
+            </if>
+            <if test="goodsInfo != null">
+                goods_info,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="goodsId != null">
+                #{goodsId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsInfo != null">
+                #{goodsInfo,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.example.weizhunon.Pojo.GoodsInfo">
+        <!--@mbg.generated-->
+        update goodsInfo
+        <set>
+            <if test="goodsId != null">
+                goods_id = #{goodsId,jdbcType=INTEGER},
+            </if>
+            <if test="goodsInfo != null">
+                goods_info = #{goodsInfo,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.example.weizhunon.Pojo.GoodsInfo">
+        <!--@mbg.generated-->
+        update goodsInfo
+        set goods_id = #{goodsId,jdbcType=INTEGER},
+        goods_info = #{goodsInfo,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
